@@ -19,9 +19,10 @@ JAVASCRIPT
 
 		$(".myClassname").deleteInPlace({
 				clicked: function(onWhat, attribs, evt){
-          // onWhat has two possible values, "ok" and "cancel"
+                                        // onWhat has two possible values, "ok" and "cancel"
 					console.log(onWhat, attribs, evt);
 				},
+				// defaults are shown
 				label: {
 				    ok: "OK",
 				    cancel: "Cancel",
