@@ -28,67 +28,67 @@
 
             plugin.settings = $.extend({}, defaults, options);
 
-			var buttonOk = $("<a class='dp-confirm'>" + plugin.settings.label.ok + "</a>");
-			var buttonCancel = $("<a class='dp-cancel'>" + plugin.settings.label.cancel + "</a>");
-			var container1 = $("<div class='controlset controlset1'></div>");
-			var container2 = $("<div class='controlset controlset2'></div>");
-			var cssStyles = null;
+		var buttonOk = $("<a class='dp-confirm'>" + plugin.settings.label.ok + "</a>");
+		var buttonCancel = $("<a class='dp-cancel'>" + plugin.settings.label.cancel + "</a>");
+		var container1 = $("<div class='controlset controlset1'></div>");
+		var container2 = $("<div class='controlset controlset2'></div>");
+		var cssStyles = null;
 
-			var C = $element;
-			//
-			var a = $("<div class='dp-controls'></div>");
-			var f = $element.clone();
-			f.click(function(){
-				container1.fadeOut();
-				container2.fadeIn();
-				
-			});
-			a.mouseleave(function(){
+		var C = $element;
+		//
+		var a = $("<div class='dp-controls'></div>");
+		var f = $element.clone();
+		f.click(function(){
+			container1.fadeOut();
+			container2.fadeIn();
+
+		});
+		a.mouseleave(function(){
+			container2.fadeOut();
+			container1.fadeIn();
+		});
+
+		container1.append(f);
+		a.append(container1)
+
+		if(plugin.settings.label.confirm != ''){
+			container2.append("<span class=\"dp-confirmmsg\">" + plugin.settings.label.confirm + "</span>");
+		}
+
+		$.each($element[0].attributes, function(idx, attr){
+			if(!attributesToIgnore.includes(attr.name)){
+				buttonOk.attr(attr.name, attr.value);
+				buttonCancel.attr(attr.name, attr.value);
+			}
+		});
+
+		buttonOk.on("click", function(e){
+			e.preventDefault();
+			if(options.clicked !== undefined){
+				options.clicked('ok', $(this)[0].attributes, e);
 				container2.fadeOut();
 				container1.fadeIn();
-			});
-			
-			container1.append(f);
-			a.append(container1)
-
-			if(plugin.settings.label.confirm != ''){
-				container2.append("<span class=\"dp-confirmmsg\">" + plugin.settings.label.confirm + "</span>");
 			}
-			
-			$.each($element[0].attributes, function(idx, attr){
-				if(!attributesToIgnore.includes(attr.name)){
-					buttonOk.attr(attr.name, attr.value);
-					buttonCancel.attr(attr.name, attr.value);
-				}
-			});
+		});
+		container2.append(buttonOk);
 
-			buttonOk.on("click", function(e){
-				e.preventDefault();
-				if(options.clicked !== undefined){
-					options.clicked('ok', $(this)[0].attributes, e);
-					container2.fadeOut();
-					container1.fadeIn();
-				}
-			});
-			container2.append(buttonOk);
-			
-			b = "&nbsp;/&nbsp;"
-			container2.append(b);
-			
-			
-			buttonCancel.on("click", function(e){
-				e.preventDefault();
-				if(options.clicked !== undefined){
-					options.clicked('cancel', $(this)[0].attributes, e);
-					container2.fadeOut();
-					container1.fadeIn();
-				}
-			});
-			container2.append(buttonCancel);
+		b = "&nbsp;/&nbsp;"
+		container2.append(b);
 
-			a.append(container2);
 
-			C.replaceWith(a);
+		buttonCancel.on("click", function(e){
+			e.preventDefault();
+			if(options.clicked !== undefined){
+				options.clicked('cancel', $(this)[0].attributes, e);
+				container2.fadeOut();
+				container1.fadeIn();
+			}
+		});
+		container2.append(buttonCancel);
+
+		a.append(container2);
+
+		C.replaceWith(a);
 
         }
 
