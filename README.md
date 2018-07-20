@@ -36,5 +36,7 @@ clicked (event). Fired when the user select the OK or Cancel links.
 label (object).
 
 label.ok. The caption to display for the OK link.
+
 label.cancel. The caption to display for the cancel link.
+
 label.confirm. The caption to display for the confirmation message.
