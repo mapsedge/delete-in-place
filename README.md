@@ -7,7 +7,7 @@ When the user clicks on the link to perform an action, the link fades out and is
 
 If the user chooses "Cancel" or moves the mouse out of the link area, the initial action link is restored. 
 
-If OK is chosen, and "clicked" event is fired by the plugin, which the developer can then use to trigger whatever additional actions they require.
+If OK is chosen, a "clicked" event is fired by the plugin, which the developer can then use to trigger whatever additional actions they require.
 
 USAGE
 
