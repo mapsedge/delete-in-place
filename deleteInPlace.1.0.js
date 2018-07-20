@@ -98,10 +98,14 @@
 
     $.fn.deleteInPlace = function(options) {
 
+	// styles creation
 	var sheet = document.styleSheets[0];
-	sheet.insertRule('.dp-controls { transition: opacity .5s; opacity: .2; cursor: default; display: inline-block; position: relative; padding: 1em; }', 0);
-	sheet.insertRule('.dp-controls>div { position: absolute; left: 0; top: 0; font-size: 1.2em;}', 0);
 	sheet.insertRule('.dp-controls * { font-size: 1em;}', 0);
+	// the container that will hold all of the plugin-generated objects
+	sheet.insertRule('.dp-controls { transition: opacity .5s; opacity: .2; cursor: default; display: inline-block; position: relative; padding: 1em; }', 0);
+	// the containers for the created links
+	sheet.insertRule('.dp-controls>div { position: absolute; left: 0; top: 0; font-size: 1.2em;}', 0);
+	// the container for the OK/Cancel links
 	sheet.insertRule('.dp-controls>div.controlset2 { display:none;white-space:nowrap; }', 0);
 	sheet.insertRule('.dp-controls:hover { opacity: 1; }', 0);
 	sheet.insertRule('.dp-confirm {font-weight: bold; color:#080;}', 0);
