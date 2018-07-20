@@ -41,3 +41,7 @@ label.ok. The caption to display for the OK link.
 label.cancel. The caption to display for the cancel link.
 
 label.confirm. The caption to display for the confirmation message.
+
+NOTES
+
+In order to make the UX as unobtrusive as possible, the link is rendered at 50% opacity, 100% opacity on hover. To change the appearance of the confirmation text and links, see the styles creation in the plugin itself.
